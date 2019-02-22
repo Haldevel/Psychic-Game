@@ -1,4 +1,4 @@
-//document.write("Guess what letter I'm thinking of");
+//declare main variables
 var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
@@ -6,59 +6,44 @@ var yourGuesses = [];
 
 
 var possible = "abcdefghijklmnopqrstuvwxyz";
-//have a random letter 
+//generate a random letter 
 var randomLetter = generateLetter();
-console.log(" random " + randomLetter);
+console.log("Random " + randomLetter);
 
+//event handler onkeyup
 document.addEventListener('keyup', function(event) {
 
-    /* var x = event.keyCode;         // Get the Unicode value
-    var y = String.fromCharCode(x).toLowerCase();    */
-
     var y = event.key;
-  
-    //console.log("U typed " + y);
-
-    if(possible.charAt(y) === '-1') {
+     
+   /*  if(possible.indexOf(y) == '-1') { */
+    if(!y.match(/[a-z]/i)){
         console.log("Please pick a letter");
     }
     else {
 
+        //if guess is right
         if(randomLetter === y) {
             console.log("You guessed right!");
             wins++;
             guessesLeft--;
             yourGuesses.push(y);
-            console.log(yourGuesses); 
-            console.log(wins);
-            console.log(guessesLeft);
             resetGame();
+            //display of winning letters
             var lettersText = document.getElementById("letters");
             if(lettersText.textContent.length === 0) {
                 lettersText.textContent = y;
             }
             else {
                 lettersText.textContent = lettersText.textContent + " , " + y;            
-            }
-     
-    
-        }
+            }    
+        } //the guess is not right
         else  {
             console.log("You did not guess right!"); 
-            //losses++;
             guessesLeft--;
             yourGuesses.push(y);
-            console.log(yourGuesses); 
-            console.log(losses);
-            //console.log(guessesLeft);
-            //console.log("new random " + randomLetter);
             if(guessesLeft === 0) {
-                // losses++;
-                // randomLetter = generateLetter();
-                // console.log("new random " + randomLetter);
                 resetGame() ;
-                losses++;
-               
+                losses++;               
             }
         }
 
@@ -74,45 +59,23 @@ document.addEventListener('keyup', function(event) {
         var yourGuessesText = document.getElementById("yourGuesses");
         yourGuessesText.textContent =  yourGuesses;
         
-    }
-    
+    }    
   });
 
-//read the letter typed on keyboard
-/* if(toKeyPressed) {
-    console.log("You pressed " + toKeyPressed());
-    dhdhhdhd
-
-} */
-
-//if it is the same letter, add 1 to number of wins, subtruct 1 from guessesLeft and and the letter to the array yourGuesses 
-
-//if it 
-
-//document.querySelector("#wins")
-
+//function to generate a random letter
 function generateLetter() {
-    var char = "";
-  
-  
+    var char = "";    
     char = possible.charAt(Math.floor(Math.random() * possible.length));
   
     return char;
   }
 
-  function resetGame() {
+//function to reset the game 
+function resetGame() {
     randomLetter = generateLetter();
-    console.log("new random " + randomLetter);
+    console.log("New random " + randomLetter);
     guessesLeft = 9;
     yourGuesses = [];
   }
 
-  /* function toKeyPressed(event) {
-
-    var x = event.keyCode;         // Get the Unicode value
-    var y = String.fromCharCode(x);    // Convert the value into a character
-    document.getElementById("demo").innerHTML = "Number: " + x + " = Character: " + y; 
-    return y;
-
-} */
   

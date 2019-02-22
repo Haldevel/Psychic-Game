@@ -7,18 +7,64 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 
   <title>Psychic Game</title>
   </head>
   <body>
-    <h1>Psychic Game</h1>
-    <h4 id="question">Guess what letter I'm thinking of?</h4>
-    <div >Wins: <span id="letters"></span></div> <h5 id="wins">0</h5>
-    <div>Losses:</div> <h5 id="losses">0</h5>
-    <div>Guesses Left:</div> <div id="guessesLeft">10</div>
-    <div>Your Guesses So Far: </div> <div id="yourGuesses">
-     <!--    <input type="text" size="40" onkeypress="toKeyPressed(event)"> -->
+    <div id="header" class="jumbotron">
+      <h1 class="display-4 mb-5">Psychic Game</h1>
+      <p class="lead mt-5"><h4 id="question">Guess what letter I'm thinking of?</h4></p> 
+      <hr class="my-4">   
     </div>
+     
+    <div class="container">
+        <!--first row-->
+        <div class="row">
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">Wins:  <span id="letters"></span></h6>
+                        <hr>
+                        <p class="card-text"><h5 id="wins" class="display-4">0</h5></p>
+                    </div>
+                </div>    
+            </div> 
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">Losses:</h6>
+                        <hr>
+                        <p class="card-text"><h5 id="losses" class="display-4">0</h5></p>
+                    </div>
+                </div>          
+            </div> 
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">Guesses Left:</h6>
+                        <hr>
+                        <p class="card-text"><div id="guessesLeft">9</div></p>
+                    </div>
+                </div>          
+            </div> 
+            <div class="col-md-4 col-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">Your Guesses So Far:</h6>
+                            <hr>
+                            <p class="card-text"><div id="yourGuesses"></div></p>
+                        </div>
+                    </div>                                      
+                </div>
+        </div>
+    </div>
+
+    <!-- <div>Wins: <span id="letters"></span></div> <h5 id="wins">0</h5>
+    <div>Losses:</div> <h5 id="losses">0</h5>
+    <div>Guesses Left:</div> <div id="guessesLeft">9</div>
+    <div>Your Guesses So Far: </div> <div id="yourGuesses"></div> -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="assets/javascript/game.js"></script>
