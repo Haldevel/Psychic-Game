@@ -1,7 +1,7 @@
 //document.write("Guess what letter I'm thinking of");
 var wins = 0;
 var losses = 0;
-var guessesLeft = 10;
+var guessesLeft = 9;
 var yourGuesses = [];
 
 
@@ -32,20 +32,34 @@ document.addEventListener('keyup', function(event) {
             console.log(yourGuesses); 
             console.log(wins);
             console.log(guessesLeft);
-            randomLetter = generateLetter();
-            console.log("new random " + randomLetter);
-            
+            resetGame();
+            var lettersText = document.getElementById("letters");
+            if(lettersText.textContent.length === 0) {
+                lettersText.textContent = y;
+            }
+            else {
+                lettersText.textContent = lettersText.textContent + " , " + y;            
+            }
+     
     
         }
         else  {
             console.log("You did not guess right!"); 
-            losses++;
+            //losses++;
             guessesLeft--;
             yourGuesses.push(y);
             console.log(yourGuesses); 
             console.log(losses);
-            console.log(guessesLeft);
-            console.log("new random " + randomLetter);
+            //console.log(guessesLeft);
+            //console.log("new random " + randomLetter);
+            if(guessesLeft === 0) {
+                // losses++;
+                // randomLetter = generateLetter();
+                // console.log("new random " + randomLetter);
+                resetGame() ;
+                losses++;
+               
+            }
         }
 
         var winsText = document.getElementById("wins");
@@ -84,6 +98,13 @@ function generateLetter() {
     char = possible.charAt(Math.floor(Math.random() * possible.length));
   
     return char;
+  }
+
+  function resetGame() {
+    randomLetter = generateLetter();
+    console.log("new random " + randomLetter);
+    guessesLeft = 9;
+    yourGuesses = [];
   }
 
   /* function toKeyPressed(event) {
