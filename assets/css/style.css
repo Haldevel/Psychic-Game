@@ -30,3 +30,10 @@
     font-weight: 400;
     color: #666;
   }
+
+  #letters {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #666;
+    padding-left: 2px;
+  }
